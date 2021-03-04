@@ -77,12 +77,9 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-SAITAMA_IMG = "https://images6.alphacoders.com/112/thumb-1920-1126615.jpg"
+SAITAMA_IMG = "https://telegra.ph/file/20c1d247aaecec5e3a55e.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
-Senku is hosted on one of Heroku's Servers and doesn't require any donations as of now but \
-You can donate to the original writer of the Base code, Paul
-There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
+DONATE_STRING = """Yahho terima kasih jika kamu ingin donasi tapi, karena kami menggunakan server gratisan dari heroku jadi kami tidak terlalu membutuhkan saat ini, sekali lagi terima kasih."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -205,26 +202,26 @@ def start(update: Update, context: CallbackContext):
                                 context.bot.username)),
                          InlineKeyboardButton(
                              text=" 🔔 Updates ",
-                             url="https://t.me/SenkuUpdates")
+                             url="https://t.me/KurumiUpdates")
                      ],
                      [
                         InlineKeyboardButton(
                             text=" ✨ Help ",
-                            url="https://t.me/SenkuRobot?start=help"),
+                            url="https://t.me/KurumiRobot?start=help"),
                          InlineKeyboardButton(
                             text=" ⚡️ Get Started ",
-                             url="https://t.me/SenkuUpdates/4")        
+                             url="https://t.me/KurumiUpdates/74")        
                        
                      ],
                      [
                         InlineKeyboardButton(
                              text=" ❤️ Source Code ",
-                             url="https://github.com/FtSasaki/SenkuRobot")
+                             url="https://github.com/erruuuu/KurumiRobot")
                     
                     ]]))
     else:
         update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>"
+            "[Kurumi](t.me/kurumirobot) sudah aktif\n<b>Telah aktif selama</b> <code>{}</code>"
             .format(uptime),
             parse_mode=ParseMode.HTML)
 
@@ -499,8 +496,7 @@ def donate(update: Update, context: CallbackContext):
 
         if OWNER_ID != 254318997 and DONATION_LINK:
             update.effective_message.reply_text(
-                "You can also donate to the person currently running me "
-                "[here]({})".format(DONATION_LINK),
+                "Tapi akan membantu jika kamu mau bergabung dengan grup kami di [Anime Lovers Indo](https://t.me/grup_anime_indo)".format(DONATION_LINK),
                 parse_mode=ParseMode.MARKDOWN)
 
     else:
