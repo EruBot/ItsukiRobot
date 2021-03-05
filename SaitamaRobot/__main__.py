@@ -193,27 +193,18 @@ def start(update: Update, context: CallbackContext):
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username)),
                          InlineKeyboardButton(
-                             text=" 🔔 Updates ",
-                             url="https://t.me/KurumiUpdates")
+                             text=" ✨ Help ",
+                             url="https://t.me/gojou_xbot?start=help")
                      ],
                      [
                         InlineKeyboardButton(
-                            text=" ✨ Help ",
-                            url="https://t.me/KurumiRobot?start=help"),
-                         InlineKeyboardButton(
-                            text=" ⚡️ Get Started ",
-                             url="https://t.me/KurumiUpdates/74")        
-                       
-                     ],
-                     [
-                        InlineKeyboardButton(
-                             text=" ❤️ Source Code ",
-                             url="https://github.com/erruuuu/KurumiRobot")
+                             text=" ❤️ Group ",
+                             url="https://t.me/grup_anime_indo")
                     
                     ]]))
     else:
         update.effective_message.reply_text(
-            "[Kurumi](t.me/kurumirobot) sudah aktif 🔥\n<b>Telah aktif selama</b> <code>{}</code>"
+            "<b>♛ Bot aktif :</b> <code>{}</code>"
             .format(uptime),
             parse_mode=ParseMode.HTML)
 
