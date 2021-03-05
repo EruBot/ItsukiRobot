@@ -51,27 +51,25 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Ara ara {}-san, watashi wa {} 🔥 
+Yahhoo {}-san, watashi wa {} 🔥 
 Tekan /help untuk melanjutkan.
 """
 
 HELP_STRINGS = """
-sebelum menggunakan bot ini, kamu bisa join ke grup kami sini :
-[Anime Lovers Indo](t.me/grup_anime_indo)
-*Main* commands available:
- ❕ /help: PM's you this message.
- ❕ /help <module name>: PM's you info about that module.
- ❕ /donate: information on how to donate!
- ❕ /settings:
-   ❕ in PM: will send you your settings for all supported modules.
-   ❕ in a group: will redirect you to pm, with all that chat's settings.
+sebelum menggunakan bot ini, kamu bisa join ke grup kami sini : [Anime Lovers Indo](t.me/grup_anime_indo)
 
-Semua perintah dapat digunakan untuk menggunakan / atau !.
+*Perintah dasar yang tersedia*
+ 🍁 /help
+ 🍁 /help <nama module>
+ 🍁 /donate
+ 🍁 /settings
+
+Semua perintah dapat digunakan untuk menggunakan / atau !
 """.format(
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-SAITAMA_IMG = "https://telegra.ph/file/20c1d247aaecec5e3a55e.jpg"
+SAITAMA_IMG = "https://telegra.ph/file/ed0da04adc61f8d161598.jpg"
 
 DONATE_STRING = """Yahho terima kasih jika kamu ingin donasi tapi, karena kami menggunakan server gratisan dari heroku jadi kami tidak terlalu membutuhkan saat ini, sekali lagi terima kasih."""
 
