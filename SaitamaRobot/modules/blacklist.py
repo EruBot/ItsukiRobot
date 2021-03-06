@@ -418,7 +418,7 @@ def del_blacklist(update, context):
                     )
                     bot.sendMessage(
                         chat.id,
-                        f"#MUTED #BLACKLIST\n**{user.first_name}** di mute selama **{value}enit**\n**Alasan :** karena menyebutkan kata yg sudah di blacklist didalam grup.\nSabar yaa.",
+                        f"#MUTED #BLACKLIST\n{user.first_name} di mute selama {value}enit\nAlasan : karena menyebutkan kata yg sudah di blacklist didalam grup.\nSabar yaa.",
                     )
                     return
             except BadRequest as excp:
