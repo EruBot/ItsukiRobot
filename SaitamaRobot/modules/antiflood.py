@@ -82,7 +82,7 @@ def check_flood(update, context) -> str:
                 until_date=mutetime,
                 permissions=ChatPermissions(can_send_messages=False),
             )
-            execstrings = "Baaka spam terus 😒\nMute {}enit\n*Peringatan :* Kalo di ulangi terus nanti di banned!".format(getvalue)
+            execstrings = "Baaka spam terus 😒\nMute {}enit\n ✵ Peringatan : Kalo di ulangi terus nanti di banned!".format(getvalue)
             tag = "TMUTE"
         send_message(
             update.effective_message, "#MUTED #ANTIFLOOD\n{}!".format(execstrings)
