@@ -78,12 +78,12 @@ def mute(update: Update, context: CallbackContext) -> str:
         bot.restrict_chat_member(chat.id, user_id, chat_permissions)
         bot.sendMessage(
             chat.id,
-            f"Muted <b>{html.escape(member.user.first_name)}</b> with no expiration date!",
+            f"<b>{html.escape(member.user.first_name)}</b> dimute ga tau sampe kapan.",
             parse_mode=ParseMode.HTML)
         return log
 
     else:
-        message.reply_text("This user is already muted!")
+        message.reply_text("Udah di mute -_-")
 
     return ""
 
@@ -102,7 +102,7 @@ def unmute(update: Update, context: CallbackContext) -> str:
     user_id = extract_user(message, args)
     if not user_id:
         message.reply_text(
-            "You'll need to either give me a username to unmute, or reply to someone to be unmuted."
+            "Kasih username atau id buat mute user, reply chat nya juga bisa."
         )
         return ""
 
@@ -201,16 +201,16 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
                 chat.id, user_id, chat_permissions, until_date=mutetime)
             bot.sendMessage(
                 chat.id,
-                f"Muted <b>{html.escape(member.user.first_name)}</b> for {time_val}!",
+                f"Kasian <b>{html.escape(member.user.first_name)}</b> dimute {time_val}.",
                 parse_mode=ParseMode.HTML)
             return log
         else:
-            message.reply_text("This user is already muted.")
+            message.reply_text("Udah di mute hadeuhh.")
 
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text(f"Muted for {time_val}!", quote=False)
+            message.reply_text(f"Mute selama {time_val}!", quote=False)
             return log
         else:
             LOGGER.warning(update)
