@@ -51,13 +51,12 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Yahhoo {}-san, watashi wa {} 🔥 
-Tekan /help untuk melanjutkan.
+*Yahhoo {}-san, watashi wa {}*
+
+Klik /help untuk melanjutkan.
 """
 
 HELP_STRINGS = """
-sebelum menggunakan bot ini, kamu bisa join ke grup kami sini : [Anime Lovers Indo](t.me/grup_anime_indo)
-
 *Perintah dasar yang tersedia*
  🍁 /help
  🍁 /help <nama module>
@@ -65,6 +64,8 @@ sebelum menggunakan bot ini, kamu bisa join ke grup kami sini : [Anime Lovers In
  🍁 /settings
 
 Semua perintah dapat digunakan untuk menggunakan / atau !
+☘☘☘☘☘☘☘☘☘☘☘☘
+*Sebelum menggunakan bot ini, kamu bisa join ke grup kami disini : [Anime Lovers Indo](t.me/grup_anime_indo)*
 """.format(
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
@@ -129,6 +130,7 @@ def send_help(chat_id, text, keyboard=None):
         chat_id=chat_id,
         text=text,
         parse_mode=ParseMode.MARKDOWN,
+        disable_web_page_preview=True,
         reply_markup=keyboard)
 
 
@@ -197,7 +199,7 @@ def start(update: Update, context: CallbackContext):
                      ],
                      [
                         InlineKeyboardButton(
-                             text=" ❤️ Group ",
+                             text=" ❤️ Group Anime Lovers ",
                              url="https://t.me/grup_anime_indo")
                     
                     ]]))
