@@ -40,7 +40,7 @@ except:
 	from youtubesearchpython import SearchVideos 
 	pass
 
-@register(pattern="^/song (.*)")
+@register(pattern="^/song2 (.*)")
 async def download_video(v_url):
 
     lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.client.get_me()
@@ -160,7 +160,7 @@ async def download_video(v_url):
         os.remove(f"{rip_data['id']}.mp4")
 
 
-@register(pattern="^/video (.*)")
+@register(pattern="^/video2 (.*)")
 async def download_video(v_url):  
     lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.client.get_me()
     if not sender.id == me.id:
@@ -278,9 +278,9 @@ async def download_video(v_url):
 
 
 __help__ = """
- ➩ /song <songname artist(optional)>: uploads the song in it's best quality available
+ ➩ /song2 <songname artist(optional)>: uploads the song in it's best quality available
 
- ➩ /video <songname artist(optional)>: uploads the video song in it's best quality available
+ ➩ /video2 <songname artist(optional)>: uploads the video song in it's best quality available
 """
 
 __mod_name__ = "Songs"
