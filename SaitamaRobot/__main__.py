@@ -64,8 +64,10 @@ HELP_STRINGS = """
  🍁 /settings
 
 Semua perintah dapat digunakan untuk menggunakan / atau !
-☘☘☘☘☘☘☘☘☘☘☘☘
-*Sebelum menggunakan bot ini, kamu bisa join ke grup kami disini : [Anime Lovers Indo](t.me/grup_anime_indo)*
+
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+*Sebelum menggunakan bot ini, kamu bisa join ke grup kami disini :* [Anime Lovers Indo](t.me/grup_anime_indo)
 """.format(
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
