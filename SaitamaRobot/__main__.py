@@ -198,7 +198,12 @@ def start(update: Update, context: CallbackContext):
                                 context.bot.username)),
                          InlineKeyboardButton(
                              text=" ✨ Help ",
-                             url="https://t.me/gojou_xbot?start=help")
+                             url="https://t.me/gojou_xbot?start=help")],
+                             [
+                                InlineKeyboardButton(
+                                text="Help2",
+                                callback_data="help_back",
+                                )
                      ],
                      [
                         InlineKeyboardButton(
