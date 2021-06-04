@@ -22,6 +22,26 @@ from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
 
 
+# do not async
+def send_help(chat_id, text, keyboard=None):
+    '''#TODO
+
+    Params:
+        chat_id  -
+        text     -
+        keyboard -
+    '''
+
+    if not keyboard:
+        kb = paginate_modules(0, HELPABLE, "help")
+        kb.append([InlineKeyboardButton(text='Support', url='https://t.me/YorkTownEagleUnion'),
+        InlineKeyboardButton(text='Back', callback_data='start_back'), InlineKeyboardButton(text="Try inline", switch_inline_query_current_chat="")])
+        keyboard = InlineKeyboardMarkup(kb)
+    dispatcher.bot.send_message(
+        chat_id=chat_id, text=text, parse_mode=ParseMode.MARKDOWN, reply_markup=keyboard
+    )
+
+
 def get_readable_time(seconds: int) -> str:
     count = 0
     ping_time = ""
