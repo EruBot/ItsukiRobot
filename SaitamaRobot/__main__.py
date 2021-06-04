@@ -159,7 +159,10 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id, HELPABLE[mod].__help__,
                     InlineKeyboardMarkup([[
                         InlineKeyboardButton(
-                            text="Back", callback_data="help_back")
+                            text="Back", callback_data="help_back"),
+                                InlineKeyboardButton(
+                                    text="Group", url="https://t.me/grup_anime_indo"
+                                )
                     ]]))
             elif args[0].lower() == "markdownhelp":
                 IMPORTED["extras"].markdown_help_sender(update)
@@ -260,7 +263,10 @@ def help_button(update, context):
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton(
-                        text="Back", callback_data="help_back")
+                        text="Back", callback_data="help_back"),
+                                InlineKeyboardButton(
+                                    text="Group", url="https://t.me/grup_anime_indo"
+                                )
                 ]]))
 
         elif prev_match:
