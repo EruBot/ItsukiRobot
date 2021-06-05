@@ -23,7 +23,7 @@ except:
 
     pass
 
-# @register(pattern="^/song (.*)")
+# @register(pattern="^/song2 (.*)")
 async def download_video(v_url):
 
     lazy = v_url
@@ -143,7 +143,7 @@ async def download_video(v_url):
         os.remove(f"{rip_data['id']}.mp4")
 
 
-@register(pattern="^/video (.*)")
+@register(pattern="^/video2 (.*)")
 async def download_video(v_url):
     lazy = v_url
     sender = await lazy.get_sender()
@@ -287,4 +287,4 @@ name & you can play music on voice chat too.*
   ➥ /admincache: Updates admin info of your group. Try if bot isn't recognize admin
   ➥ /userbotjoin: Invite @EugenVC_Assistant to your chat.
 """
-__mod_name__ = "Music"
+__mod_name__ = "Music2"
