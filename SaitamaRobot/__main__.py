@@ -74,9 +74,8 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-ʏᴀʜʜᴏᴏ[,](https://telegra.ph/file/fcbeb3cf5a203e0acea18.jpg), ᴡᴀᴛᴀsʜɪ ᴡᴀ ɪᴛsᴜᴋɪ ɴᴀᴋᴀɴᴏ ✨
-
-ᴋʟɪᴋ /help ᴜɴᴛᴜᴋ ᴍᴇʟᴀɴᴊᴜᴛᴋᴀɴ.
+Yahho [,](https://telegra.ph/file/fcbeb3cf5a203e0acea18.jpg)
+Watashi wa Itsuki Nakano ✨ desu.
 """
 
 buttons = [
@@ -97,8 +96,9 @@ buttons = [
 
 
 HELP_STRINGS = """
-`ʜɪ.. ɪ'ᴍ` [itsuki](https://telegra.ph/file/fcbeb3cf5a203e0acea18.jpg) 
-`ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴꜱ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴅᴏᴄᴜᴍᴇɴᴛᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ꜱᴘᴇᴄɪꜰɪᴄ ᴍᴏᴅᴜʟᴇꜱ..`"""
+Hai, saya [itsuki](https://telegra.ph/file/fcbeb3cf5a203e0acea18.jpg) 
+Klik tombol di bawah untuk mendapatkan dokumentasi tentang modul tertentu.
+"""
 
 yone_IMG = "https://telegra.ph/file/fcbeb3cf5a203e0acea18.jpg"
 
