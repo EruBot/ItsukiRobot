@@ -304,7 +304,10 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="Back", callback_data="help_back"),
+                                InlineKeyboardButton(
+                                    text="Group", url="https://t.me/grup_anime_indo"
+                                )]]
                 ),
             )
 
@@ -449,7 +452,10 @@ def get_help(update: Update, context: CallbackContext):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="Back", callback_data="help_back"),
+                                InlineKeyboardButton(
+                                    text="Group", url="https://t.me/grup_anime_indo"
+                                )]]
             ),
         )
 
