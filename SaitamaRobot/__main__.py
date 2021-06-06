@@ -74,7 +74,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-ʏᴀʜʜᴏᴏ, [🤗](https://telegra.ph/file/ebf62ff4c5668adcfa28c.jpg), ᴡᴀᴛᴀsʜɪ ᴡᴀ ɪᴛsᴜᴋɪ ɴᴀᴋᴀɴᴏ ✨
+ʏᴀʜʜᴏᴏ[,](https://telegra.ph/file/fcbeb3cf5a203e0acea18.jpg), ᴡᴀᴛᴀsʜɪ ᴡᴀ ɪᴛsᴜᴋɪ ɴᴀᴋᴀɴᴏ ✨
 
 ᴋʟɪᴋ /help ᴜɴᴛᴜᴋ ᴍᴇʟᴀɴᴊᴜᴛᴋᴀɴ.
 """
@@ -87,7 +87,7 @@ buttons = [
     [
         InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="yone_"),
         InlineKeyboardButton(
-            text="ɢʀᴏᴜᴘ", url=f"https://t.me/{SUPPORT_CHAT}"
+            text="ɢʀᴏᴜᴘ", url=f"https://t.me/grup_anime_indo"
         ),
     ],
     [
@@ -102,10 +102,7 @@ HELP_STRINGS = """
 
 yone_IMG = "https://telegra.ph/file/fcbeb3cf5a203e0acea18.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project via [Paypal](#) or by contacting @kittu5588 \
- Supporting isnt always financial! \
- Those who cannot provide monetary support are welcome to help us develop the bot at ."""
+DONATE_STRING = """Soon."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -633,7 +630,7 @@ def donate(update: Update, context: CallbackContext):
         if OWNER_ID != 254318997 and DONATION_LINK:
             update.effective_message.reply_text(
                 "You can also donate to the person currently running me "
-                "[here]({})".format(DONATION_LINK),
+                "[here](https://www.paypal.me)".format(DONATION_LINK),
                 parse_mode=ParseMode.MARKDOWN,
             )
 
