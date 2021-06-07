@@ -182,7 +182,7 @@ def reverse(update: Update, context: CallbackContext):
     msg = update.effective_message
     reply_text = msg.reply_to_message.reply_text if msg.reply_to_message else msg.reply_text
     reply_text(
-        "➠ /reverse udah diganti /grs biar cepet :v \n ➠ /reverse is changed to /grs"
+        "➠ /reverse udah diganti /grs biar cepet :v \n➠ /reverse is changed to /grs"
     )
 
 
