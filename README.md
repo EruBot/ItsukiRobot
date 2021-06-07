@@ -7,7 +7,7 @@ A modular Telegram Python bot running on python3 with a sqlalchemy database and 
 
 Can be found on telegram as [Itsuki Nakano](https://t.me/gojou_xbot).
 
-The Support group can be reached out to at [Anime Lovers Indo](https://t.me/grup_anime_indo), where you can ask for help about [SenkuRobot](https://t.me/SenkuRobot), discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
+The Support group can be reached out to at [Anime Lovers Indo](https://t.me/grup_anime_indo), where you can ask for help about [Itsuki Nakano](https://t.me/gojou_xbot), discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
 
 Owner bot [erruuu](https://t.me/erruuu) 
 
