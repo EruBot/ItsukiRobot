@@ -350,13 +350,26 @@ def yone_about_callback(update, context):
     query = update.callback_query
     if query.data == "yone_":
         query.message.edit_text(
-            text=""" ℹ️ Idk what to write. """,
+            text="""
+ℹ️ **Tentang Bot Itsuki.** 
+
+Hai
+
+*Itsuki* adalah bot pengelola grup bertema anime.
+
+*Itsuki* memiliki fungsi mengelola Grup seperti *Anti-Flood*, *Blacklist* dll yang dapat membantu grup Anda dari spammer dan kang toxic.
+
+Join juga grup kami *Anime Lovers Indo* atau klik tombol *Grup* dibawah ini.
+""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Back", callback_data="yone_back")
+                    InlineKeyboardButton(text="Kembali", callback_data="yone_back"),
+                                InlineKeyboardButton(
+                                    text="Grup", url="https://t.me/grup_anime_indo"
+                                )
                  ]
                 ]
             ),
