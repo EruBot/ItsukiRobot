@@ -181,10 +181,9 @@ def scam(imgspage, lim):
 __help__ = f"""
 *Commands:* 
 
-
 • `/grs`*:* Does a *reverse image search* of the media which it was replied to.
 
-Reports bugs at @grup_anime_indo.
+Reports bugs at [Anime Lovers Indo](buttonurl:t.me/grup_anime_indo).
 """
 
 __mod_name__ = "Image Search"
