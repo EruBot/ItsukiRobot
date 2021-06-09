@@ -494,7 +494,7 @@ def __stats__():
     )
 
 
-__help__ = "" no help string
+__help__ = "" # no help string
 
 __mod_name__ = "Stickers BL"
 
