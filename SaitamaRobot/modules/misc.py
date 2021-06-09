@@ -78,27 +78,35 @@ def markdown_help(update: Update, context: CallbackContext):
 
 __help__ = """
 *Available commands:*
-*Markdown:*
+*➤ Markdown:*
  • /markdownhelp*:* quick summary of how markdown works in telegram - can only be called in private chats
-*Paste:*
+*➤ Paste:*
  • /paste*:* Saves replied content to `nekobin.com` and replies with a url
-*React:*
+*➤ React:*
  • /react*:* Reacts with a random reaction 
-*Urban Dictonary:*
+*➤ Urban Dictonary:*
  • /ud <word>*:* Type the word or expression you want to search use
-*Wikipedia:*
+*➤ Wikipedia:*
  • /wiki <query>*:* wikipedia your query
-*Wallpapers:*
+*➤ Wallpapers:*
  • /wall <query>*:* get a wallpaper from wall.alphacoders.com
-*Currency converter:* 
+*➤ Currency converter:* 
  • /cash*:* currency converter
 Example:
  `/cash 1 USD INR`  
       _OR_
  `/cash 1 usd inr`
 Output: `1.0 USD = 75.505 INR`
-*Plet*
-  /plet *:-* text get funny emojify
+*➤ Plet*
+ • /plet *:-* text get funny emojify
+*➤ Image Search*
+ • /grs: Does a reverse image search of the media which it was replied to.
+*➤ Text to Speech*
+ • /tts <text>: convert text to speech.
+*➤ Time*
+ • /time <query>: Gives information about a timezone.
+*Available queries:* Country Code/Country Name/Timezone Name
+• 🕐 [Timezones list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.group)
