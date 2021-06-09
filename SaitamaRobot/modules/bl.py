@@ -71,7 +71,7 @@ def bl(update, context):
 @run_async
 @user_admin
 @typing_action
-def add_blacklist(update, context):
+def add_bl(update, context):
     msg = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
@@ -124,7 +124,7 @@ def add_blacklist(update, context):
 @run_async
 @user_admin
 @typing_action
-def unblacklist(update, context):
+def unbl(update, context):
     msg = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
@@ -202,7 +202,7 @@ def unblacklist(update, context):
 @loggable
 @user_admin
 @typing_action
-def blacklist_mode(update, context):
+def bl_mode(update, context):
     chat = update.effective_chat
     user = update.effective_user
     msg = update.effective_message
@@ -449,7 +449,7 @@ def __stats__():
     )
 
 
-__mod_name__ = "Blacklists"
+__mod_name__ = "BlList"
 
 __help__ = """
 
@@ -457,36 +457,36 @@ Blacklists are used to stop certain triggers from being said in a group. Any tim
 
 *NOTE*: Blacklists do not affect group admins.
 
- • `/blacklist`*:* View the current blacklisted words.
+ • `/bl`*:* View the current blacklisted words.
 
 Admin only:
- • `/addblacklist <triggers>`*:* Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
- • `/unblacklist <triggers>`*:* Remove triggers from the blacklist. Same newline logic applies here, so you can remove multiple triggers at once.
- • `/blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>`*:* Action to perform when someone sends blacklisted words.
+ • `/addbl <triggers>`*:* Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
+ • `/unbl <triggers>`*:* Remove triggers from the blacklist. Same newline logic applies here, so you can remove multiple triggers at once.
+ • `/blmode <off/del/warn/ban/kick/mute/tban/tmute>`*:* Action to perform when someone sends blacklisted words.
 
 """
-BLACKLIST_HANDLER = DisableAbleCommandHandler(
-    "blacklist", blacklist, pass_args=True, admin_ok=True
+BL_HANDLER = DisableAbleCommandHandler(
+    "bl", bl, pass_args=True, admin_ok=True
 )
-ADD_BLACKLIST_HANDLER = CommandHandler("addblacklist", add_blacklist)
-UNBLACKLIST_HANDLER = CommandHandler("unblacklist", unblacklist)
-BLACKLISTMODE_HANDLER = CommandHandler("blacklistmode", blacklist_mode, pass_args=True)
+ADD_BL_HANDLER = CommandHandler("addbl", add_bl)
+UNBL_HANDLER = CommandHandler("unbl", unbl)
+BLMODE_HANDLER = CommandHandler("blmode", bl_mode, pass_args=True)
 BLACKLIST_DEL_HANDLER = MessageHandler(
     (Filters.text | Filters.command | Filters.sticker | Filters.photo) & Filters.group,
     del_blacklist,
     allow_edit=True,
 )
 
-dispatcher.add_handler(BLACKLIST_HANDLER)
-dispatcher.add_handler(ADD_BLACKLIST_HANDLER)
-dispatcher.add_handler(UNBLACKLIST_HANDLER)
-dispatcher.add_handler(BLACKLISTMODE_HANDLER)
+dispatcher.add_handler(BL_HANDLER)
+dispatcher.add_handler(ADD_BL_HANDLER)
+dispatcher.add_handler(UNBL_HANDLER)
+dispatcher.add_handler(BLMODE_HANDLER)
 dispatcher.add_handler(BLACKLIST_DEL_HANDLER, group=BLACKLIST_GROUP)
 
 __handlers__ = [
-    BLACKLIST_HANDLER,
-    ADD_BLACKLIST_HANDLER,
-    UNBLACKLIST_HANDLER,
-    BLACKLISTMODE_HANDLER,
+    BL_HANDLER,
+    ADD_BL_HANDLER,
+    UNBL_HANDLER,
+    BLMODE_HANDLER,
     (BLACKLIST_DEL_HANDLER, BLACKLIST_GROUP),
 ]
