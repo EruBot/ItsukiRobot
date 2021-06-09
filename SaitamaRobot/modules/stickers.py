@@ -44,6 +44,7 @@ def cb_sticker(update: Update, context: CallbackContext):
     if len(split) == 1:
         msg.reply_text('Provide some name to search for pack.')
         return
+    scraper = cloudscraper.create_scraper()
     text = requests.get(combot_stickers_url + split[1]).text
     soup = bs(text, 'lxml')
     results = soup.find_all("a", {'class': "sticker-pack__btn"})
@@ -292,7 +293,7 @@ def kang(update: Update, context: CallbackContext):
                 png_sticker = urlemoji[1]
                 sticker_emoji = urlemoji[2]
             except IndexError:
-                sticker_emoji = "🤔"
+                sticker_emoji = "🍁"
             urllib.urlretrieve(png_sticker, kangsticker)
             im = Image.open(kangsticker)
             maxsize = (512, 512)
@@ -416,7 +417,7 @@ def makepack_internal(
             success = context.bot.create_new_sticker_set(
                 user.id,
                 packname,
-                f"{name}`s kang pack" + extra_version,
+                f"Sticker Pack by {name}" + extra_version,
                 png_sticker=png_sticker,
                 emojis=emoji,
             )
@@ -424,7 +425,7 @@ def makepack_internal(
             success = context.bot.create_new_sticker_set(
                 user.id,
                 packname,
-                f"{name}`s animated kang pack" + extra_version,
+                f"Animated Pack by {name}" + extra_version,
                 tgs_sticker=tgs_sticker,
                 emojis=emoji,
             )
@@ -472,10 +473,10 @@ def makepack_internal(
 
 
 __help__ = """
-• `/stickerid`*:* reply to a sticker to me to tell you its file ID.
-• `/getsticker`*:* reply to a sticker to me to upload its raw PNG file.
-• `/kang`*:* reply to a sticker to add it to your pack.
-• `/stickers`*:* Find stickers for given term on combot sticker catalogue
+• /stickerid*:* reply to a sticker to me to tell you its file ID.
+• /getsticker*:* reply to a sticker to me to upload its raw PNG file.
+• /kang*:* reply to a sticker to add it to your pack.
+• /stickers*:* Find stickers for given term on combot sticker catalogue
 """
 
 __mod_name__ = "Stickers"
