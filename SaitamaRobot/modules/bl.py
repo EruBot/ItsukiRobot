@@ -6,7 +6,7 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, MessageHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-import SaitamaRobot.modules.sql.blacklist_sql as sql
+import SaitamaRobot.modules.sql.bl_sql as sql
 from SaitamaRobot import dispatcher, LOGGER
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
@@ -42,7 +42,7 @@ def bl(update, context):
 
     filter_list = "Current blacklisted words in <b>{}</b>:\n".format(chat_name)
 
-    all_blacklisted = sql.get_chat_blacklist(chat_id)
+    all_blacklisted = sql.get_chat_blacklist2(chat_id)
 
     if len(args) > 0 and args[0].lower() == "copy":
         for trigger in all_blacklisted:
@@ -94,7 +94,7 @@ def add_bl(update, context):
             {trigger.strip() for trigger in text.split("\n") if trigger.strip()}
         )
         for trigger in to_blacklist:
-            sql.add_to_blacklist(chat_id, trigger.lower())
+            sql.add_to_blacklist2(chat_id, trigger.lower())
 
         if len(to_blacklist) == 1:
             send_message(
@@ -148,7 +148,7 @@ def unbl(update, context):
         )
         successful = 0
         for trigger in to_unblacklist:
-            success = sql.rm_from_blacklist(chat_id, trigger.lower())
+            success = sql.rm_from_blacklist2(chat_id, trigger.lower())
             if success:
                 successful += 1
 
@@ -227,22 +227,22 @@ def bl_mode(update, context):
     if args:
         if args[0].lower() in ["off", "nothing", "no"]:
             settypeblacklist = "do nothing"
-            sql.set_blacklist_strength(chat_id, 0, "0")
+            sql.set_blacklist_strength2(chat_id, 0, "0")
         elif args[0].lower() in ["del", "delete"]:
             settypeblacklist = "delete blacklisted message"
-            sql.set_blacklist_strength(chat_id, 1, "0")
+            sql.set_blacklist_strength2(chat_id, 1, "0")
         elif args[0].lower() == "warn":
             settypeblacklist = "warn the sender"
-            sql.set_blacklist_strength(chat_id, 2, "0")
+            sql.set_blacklist_strength2(chat_id, 2, "0")
         elif args[0].lower() == "mute":
             settypeblacklist = "mute the sender"
-            sql.set_blacklist_strength(chat_id, 3, "0")
+            sql.set_blacklist_strength2(chat_id, 3, "0")
         elif args[0].lower() == "kick":
             settypeblacklist = "kick the sender"
-            sql.set_blacklist_strength(chat_id, 4, "0")
+            sql.set_blacklist_strength2(chat_id, 4, "0")
         elif args[0].lower() == "ban":
             settypeblacklist = "ban the sender"
-            sql.set_blacklist_strength(chat_id, 5, "0")
+            sql.set_blacklist_strength2(chat_id, 5, "0")
         elif args[0].lower() == "tban":
             if len(args) == 1:
                 teks = """It looks like you tried to set time value for blacklist but you didn't specified time; Try, `/blacklistmode tban <timevalue>`.
@@ -257,7 +257,7 @@ Example of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks."
                 send_message(update.effective_message, teks, parse_mode="markdown")
                 return ""
             settypeblacklist = "temporarily ban for {}".format(args[1])
-            sql.set_blacklist_strength(chat_id, 6, str(args[1]))
+            sql.set_blacklist_strength2(chat_id, 6, str(args[1]))
         elif args[0].lower() == "tmute":
             if len(args) == 1:
                 teks = """It looks like you tried to set time value for blacklist but you didn't specified  time; try, `/blacklistmode tmute <timevalue>`.
@@ -272,7 +272,7 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
                 send_message(update.effective_message, teks, parse_mode="markdown")
                 return ""
             settypeblacklist = "temporarily mute for {}".format(args[1])
-            sql.set_blacklist_strength(chat_id, 7, str(args[1]))
+            sql.set_blacklist_strength2(chat_id, 7, str(args[1]))
         else:
             send_message(
                 update.effective_message,
@@ -296,7 +296,7 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
             )
         )
     else:
-        getmode, getvalue = sql.get_blacklist_setting(chat.id)
+        getmode, getvalue = sql.get_blacklist_setting2(chat.id)
         if getmode == 0:
             settypeblacklist = "do nothing"
         elif getmode == 1:
@@ -342,9 +342,9 @@ def del_blacklist(update, context):
         return
     if is_approved(chat.id, user.id):
         return
-    getmode, value = sql.get_blacklist_setting(chat.id)
+    getmode, value = sql.get_blacklist_setting2(chat.id)
 
-    chat_filters = sql.get_chat_blacklist(chat.id)
+    chat_filters = sql.get_chat_blacklist2(chat.id)
     for trigger in chat_filters:
         pattern = r"( |^|[^\w])" + re.escape(trigger) + r"( |$|[^\w])"
         if re.search(pattern, to_match, flags=re.IGNORECASE):
@@ -431,7 +431,7 @@ def __import_data__(chat_id, data):
     # set chat blacklist
     blacklist = data.get("blacklist", {})
     for trigger in blacklist:
-        sql.add_to_blacklist(chat_id, trigger)
+        sql.add_to_blacklist2(chat_id, trigger)
 
 
 def __migrate__(old_chat_id, new_chat_id):
@@ -439,13 +439,13 @@ def __migrate__(old_chat_id, new_chat_id):
 
 
 def __chat_settings__(chat_id, user_id):
-    blacklisted = sql.num_blacklist_chat_filters(chat_id)
+    blacklisted = sql.num_blacklist_chat_filters2(chat_id)
     return "There are {} blacklisted words.".format(blacklisted)
 
 
 def __stats__():
     return "• {} blacklist triggers, across {} chats.".format(
-        sql.num_blacklist_filters(), sql.num_blacklist_filter_chats()
+        sql.num_blacklist_filters2(), sql.num_blacklist_filter_chats2()
     )
 
 
