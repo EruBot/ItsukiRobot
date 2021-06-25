@@ -1,15 +1,15 @@
 {
-      "name": "SenkuRobot",
+      "name": "ItsukiRobot",
       "description": "An Anime themed Telegram group management bot.",
       "keywords": [
          "telegram",
          "anime",
          "group",
          "manager",
-         "Senku"
+         "Itsuki"
       ],   
-   "repository": "https://github.com/FtSasaki/SenkuRobot",
-   "logo": "https://telegra.ph/file/46e607fb904f7f089509d.png",
+   "repository": "https://github.com/EruBot/ItsukiRobot",
+   "logo": "https://telegra.ph/file/fcbeb3cf5a203e0acea18.jpg",
    "addons": [
     {
          "options": {
