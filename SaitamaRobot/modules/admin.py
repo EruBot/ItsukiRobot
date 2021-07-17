@@ -7,14 +7,19 @@ from telegram.utils.helpers import mention_html
 
 from SaitamaRobot import DRAGONS, dispatcher
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import (bot_admin, can_pin,
-                                                           can_promote,
-                                                           connection_status,
-                                                           user_admin,
-                                                           ADMIN_CACHE)
+from SaitamaRobot.modules.helper_funcs.chat_status import (
+    bot_admin, 
+    can_pin,
+    can_promote,
+    connection_status,
+    user_admin,
+    ADMIN_CACHE,
+)
 
-from SaitamaRobot.modules.helper_funcs.extraction import (extract_user,
-                                                          extract_user_and_text)
+from SaitamaRobot.modules.helper_funcs.extraction import (
+    extract_user,
+    extract_user_and_text,
+)
 from SaitamaRobot.modules.log_channel import loggable
 from SaitamaRobot.modules.helper_funcs.alternate import send_message
 
@@ -35,8 +40,10 @@ def promote(update: Update, context: CallbackContext) -> str:
 
     promoter = chat.get_member(user.id)
 
-    if not (promoter.can_promote_members or
-            promoter.status == "creator") and not user.id in DRAGONS:
+    if (
+        not (promoter.can_promote_members or promoter.status == "creator")
+        and user.id not in DRAGONS
+    ):
         message.reply_text("You don't have the necessary rights to do that!")
         return
 
@@ -53,7 +60,7 @@ def promote(update: Update, context: CallbackContext) -> str:
     except:
         return
 
-    if user_member.status == 'administrator' or user_member.status == 'creator':
+    if user_member.status in ('administrator', 'creator'):
         message.reply_text(
             "How am I meant to promote someone that's already an admin?")
         return
@@ -114,6 +121,15 @@ def demote(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     message = update.effective_message
     user = update.effective_user
+
+   demoter = chat.get_member(user.id)
+
+    if (
+        not (demoter.can_promote_members or demoter.status == "creator")
+        and user.id not in DRAGONS
+    ):
+        message.reply_text("You don't have the necessary rights to do that!")
+        return
 
     user_id = extract_user(message, args)
     if not user_id:
@@ -261,13 +277,16 @@ def pin(update: Update, context: CallbackContext) -> str:
     user = update.effective_user
     chat = update.effective_chat
 
-    is_group = chat.type != "private" and chat.type != "channel"
+    is_group = chat.type not in ("private", "channel")
     prev_message = update.effective_message.reply_to_message
 
     is_silent = True
     if len(args) >= 1:
-        is_silent = not (args[0].lower() == 'notify' or args[0].lower()
-                         == 'loud' or args[0].lower() == 'violent')
+        is_silent = (
+            args[0].lower() != "notify"
+            or args[0].lower() == "loud"
+            or args[0].lower() == "violent"
+        )
 
     if prev_message and is_group:
         try:
@@ -325,7 +344,7 @@ def invite(update: Update, context: CallbackContext):
 
     if chat.username:
         update.effective_message.reply_text(f"https://t.me/{chat.username}")
-    elif chat.type == chat.SUPERGROUP or chat.type == chat.CHANNEL:
+    elif chat.type in [chat.SUPERGROUP, chat.CHANNEL]:
         bot_member = chat.get_member(bot.id)
         if bot_member.can_invite_users:
             invitelink = bot.exportChatInviteLink(chat.id)
@@ -349,8 +368,7 @@ def adminlist(update, context):
     bot = context.bot
 
     if update.effective_message.chat.type == "private":
-        send_message(update.effective_message,
-                     "This command only works in Groups.")
+        send_message(update.effective_message, "This command only works in Groups.")
         return
 
     chat = update.effective_chat
@@ -493,9 +511,20 @@ dispatcher.add_handler(ADMIN_REFRESH_HANDLER)
 
 __mod_name__ = "Admin"
 __command_list__ = [
-    "adminlist", "admins", "invitelink", "promote", "demote", "admincache"
+    "adminlist", 
+    "admins", 
+    "invitelink", 
+    "promote", 
+    "demote", 
+    "admincache",
 ]
 __handlers__ = [
-    ADMINLIST_HANDLER, PIN_HANDLER, UNPIN_HANDLER, INVITE_HANDLER,
-    PROMOTE_HANDLER, DEMOTE_HANDLER, SET_TITLE_HANDLER, ADMIN_REFRESH_HANDLER
+    ADMINLIST_HANDLER, 
+    PIN_HANDLER, 
+    UNPIN_HANDLER, 
+    INVITE_HANDLER,
+    PROMOTE_HANDLER, 
+    DEMOTE_HANDLER, 
+    SET_TITLE_HANDLER, 
+    ADMIN_REFRESH_HANDLER,
 ]
